@@ -60,7 +60,7 @@ For realistic receipt photos see [PROMPT-receipt-photo.md](PROMPT-receipt-photo.
 |---|---|
 | 6 PDF invoices (text path) | 42 of 42 fields right, 13 to 15 s each once warm (the first two took about 2 minutes) |
 | 6 receipt images (vision path) | 23 of 36 fields right, 7 to 25 s each |
-| Sum check (`Verifier`) | flagged 6 of the 6 receipts that had wrong numbers, and none of the invoices |
+| Sum check (`Verifier`) | flagged all 6 receipts (each had at least one wrong or missing value) and none of the invoices |
 
 On the receipts the model mixes up quantity lines, reads the total from the wrong row or misses
 whole line items. The sum check catches exactly these, which is the useful part to show:
