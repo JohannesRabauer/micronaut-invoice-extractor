@@ -10,5 +10,6 @@
   {"file":"receipts/receipt-03-tankstelle.png","vendor":"STERN TANKSTELLE","date":"2026-11-10","currency":"EUR","items":3,"vat":11.97,"total":74.95},
   {"file":"receipts/receipt-04-diner.png","vendor":"Route 9 Diner","date":"2026-11-08","currency":"USD","items":4,"subtotal":49.0,"vat":3.55,"total":52.55},
   {"file":"receipts/receipt-05-pharmacy.png","vendor":"Whitmore Pharmacy","date":"2026-11-06","currency":"GBP","items":4,"vat":3.74,"total":22.41},
-  {"file":"receipts/receipt-06-baumarkt.png","vendor":"BAUMARKT HOFFMANN","date":"2026-11-02","currency":"EUR","items":5,"vat":12.31,"total":81.19}
+  {"file":"receipts/receipt-06-baumarkt.png","vendor":"BAUMARKT HOFFMANN","date":"2026-11-02","currency":"EUR","items":5,"vat":12.31,"total":81.19},
+  {"file":"photos/receipt-photo-01-baeckerei.png","vendor":"Bäckerei Hartmann","invoiceNumber":null,"date":"2026-11-18","currency":"EUR","items":4,"subtotal":null,"vat":1.07,"total":12.8}
 ]
