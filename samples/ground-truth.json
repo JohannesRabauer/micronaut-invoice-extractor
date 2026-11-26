@@ -1,0 +1,15 @@
+[
+  {"file":"invoices/invoice-01-nordlicht.pdf","vendor":"Nordlicht Software GmbH","invoiceNumber":"RE-2026-1187","date":"2026-10-28","currency":"EUR","items":3,"subtotal":2185.5,"vat":415.25,"total":2600.75},
+  {"file":"invoices/invoice-02-brightwave.pdf","vendor":"Brightwave Cloud Ltd","invoiceNumber":"BW-004519","date":"2026-11-03","currency":"GBP","items":4,"subtotal":945.35,"vat":189.07,"total":1134.42},
+  {"file":"invoices/invoice-03-summit.pdf","vendor":"Summit Office Supply Inc.","invoiceNumber":"SO-88213","date":"2026-10-19","currency":"USD","items":4,"subtotal":801.36,"vat":64.13,"total":865.49},
+  {"file":"invoices/invoice-04-lumiere.pdf","vendor":"Atelier Lumière SARL","invoiceNumber":"F-2026-0342","date":"2026-11-05","currency":"EUR","items":3,"subtotal":1590.0,"vat":318.0,"total":1908.0},
+  {"file":"invoices/invoice-05-bergmann.pdf","vendor":"Bergmann Haustechnik","invoiceNumber":"2026-0713","date":"2026-10-30","currency":"EUR","items":4,"subtotal":771.1,"vat":142.32,"total":913.42},
+  {"file":"invoices/invoice-06-pixelhafen.pdf","vendor":"Pixelhafen Studio","invoiceNumber":"PH-0098","date":"2026-11-09","currency":"EUR","items":4,"subtotal":770.9,"vat":146.47,"total":917.37},
+  {"file":"receipts/receipt-01-supermarkt.png","vendor":"FRISCHEMARKT MEIER","date":"2026-11-14","currency":"EUR","items":6,"vat":2.92,"total":28.13},
+  {"file":"receipts/receipt-02-cafe.png","vendor":"Café Nordstern","date":"2026-11-12","currency":"EUR","items":3,"vat":1.79,"total":16.5},
+  {"file":"receipts/receipt-03-tankstelle.png","vendor":"STERN TANKSTELLE","date":"2026-11-10","currency":"EUR","items":3,"vat":11.97,"total":74.95},
+  {"file":"receipts/receipt-04-diner.png","vendor":"Route 9 Diner","date":"2026-11-08","currency":"USD","items":4,"subtotal":49.0,"vat":3.55,"total":52.55},
+  {"file":"receipts/receipt-05-pharmacy.png","vendor":"Whitmore Pharmacy","date":"2026-11-06","currency":"GBP","items":4,"vat":3.74,"total":22.41},
+  {"file":"receipts/receipt-06-baumarkt.png","vendor":"BAUMARKT HOFFMANN","date":"2026-11-02","currency":"EUR","items":5,"vat":12.31,"total":81.19},
+  {"file":"photos/receipt-photo-01-baeckerei.png","vendor":"Bäckerei Hartmann","invoiceNumber":null,"date":"2026-11-18","currency":"EUR","items":4,"subtotal":null,"vat":1.07,"total":12.8}
+]
