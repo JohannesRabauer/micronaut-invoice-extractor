@@ -1,12 +1,7 @@
 # Overlay for NVIDIA GPUs (needs the NVIDIA container toolkit / Docker Desktop with WSL2 GPU support).
+# Ollama uses the GPU on its own once the container can see it.
 services:
   llm:
-    image: ghcr.io/ggml-org/llama.cpp:server-cuda
-    command: >
-      -hf ggml-org/gemma-3-4b-it-GGUF
-      --host 0.0.0.0 --port 8080
-      -c 8192
-      -ngl 99
     deploy:
       resources:
         reservations:
