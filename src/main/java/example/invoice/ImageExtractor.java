@@ -15,7 +15,7 @@ import java.util.Base64;
 
 /**
  * Image path: a photo or scan of a receipt goes to the vision model as an image.
- * Needs a llama-server started with a multimodal model (the compose file does that).
+ * Needs a multimodal model in Ollama (the compose file and test-resources do that).
  */
 @Singleton
 public class ImageExtractor {

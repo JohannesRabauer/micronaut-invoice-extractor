@@ -1,4 +1,4 @@
-# Invoice extractor: Micronaut + LangChain4j + llama.cpp
+# Invoice extractor: Micronaut + LangChain4j + Ollama
 
 A small Micronaut service that reads invoices (PDF) and receipts (photos) with a **local** model
 and returns typed JSON. Nothing leaves the machine, which is the point: invoices are private data.
@@ -10,13 +10,13 @@ and returns typed JSON. Nothing leaves the machine, which is the point: invoices
                                                          │  .png/.jpg → image → ChatModel (vision, JSON mode) → Invoice record
                                                          │  Verifier: line items must add up to the total
                                                          ▼
-                                             llama-server (llama.cpp, OpenAI-compatible API)
+                                             Ollama
                                              Gemma 3 4B, text + vision
 ```
 
 ## Run it
 
-Needs Docker. The first start downloads the model (about 3 GB) into a Docker volume.
+Needs Docker. The first build downloads the model (about 3 GB) into the `ollama` image.
 
 ```powershell
 # with an NVIDIA GPU
@@ -26,7 +26,14 @@ docker compose -f compose.yaml -f compose.gpu.yaml up --build
 docker compose up --build
 ```
 
-llama-server is on http://localhost:18081 (it has a small web UI), the service on http://localhost:8080.
+Ollama is on http://localhost:11434, the service on http://localhost:8080.
+
+### Development with Micronaut test-resources
+
+`mvn mn:run` (and the tests) start an Ollama container by themselves through
+`micronaut-langchain4j-ollama-testresource`, no URL to configure. The test resource looks for the image
+`langchain4j/ollama-<model-name>`; none exists for Gemma 3, so `ollama/Dockerfile` builds it under that name
+(Compose does that too, or `docker build -t langchain4j/ollama-gemma3 ollama`). Build it once before `mn:run`.
 
 ```powershell
 curl.exe -F "file=@samples/invoices/invoice-01-nordlicht.pdf" http://localhost:8080/extract
@@ -55,10 +62,10 @@ For realistic receipt photos see [PROMPT-receipt-photo.md](PROMPT-receipt-photo.
 | `InvoiceExtractor` | `@AiService` interface, text in, `Invoice` record out |
 | `ImageExtractor` | builds a vision request by hand (image + JSON mode) |
 | `Verifier` | no model: checks that items, subtotal, VAT and total agree |
-| `application.properties` | points the OpenAI module at llama-server |
+| `application.properties` | points the Ollama module at the model; base URL from test-resources or the environment |
 | `example.tools.GenerateSamples`, `Evaluate` | sample documents with ground truth, and the scoring run |
 
-## Test run (2026-11-22, RTX 3060 Laptop 6 GB, Gemma 3 4B Q4, llama.cpp server-cuda)
+## Test run (2026-11-22, RTX 3060 Laptop 6 GB, Gemma 3 4B Q4, llama.cpp server-cuda; before the switch to Ollama)
 
 Run with `docker compose --profile tools run --rm evaluate` on the Java-generated samples plus one
 ChatGPT-made receipt photo (`samples/photos`). One run per document, so a first impression only.

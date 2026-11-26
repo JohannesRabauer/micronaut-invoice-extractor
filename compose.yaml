@@ -2,28 +2,23 @@
 #   docker compose -f compose.yaml -f compose.gpu.yaml up --build
 services:
   llm:
-    image: ghcr.io/ggml-org/llama.cpp:server
-    # -hf downloads the model (and its vision projector) from Hugging Face on first start,
-    # into the llm-cache volume. Gemma 3 4B takes text and images.
-    command: >
-      -hf ggml-org/gemma-3-4b-it-GGUF
-      --host 0.0.0.0 --port 8080
-      -c 8192
+    # Ollama with Gemma 3 (text and images) baked in, see ollama/Dockerfile. The image name is the one
+    # Micronaut test-resources expect, so mn:run finds the same image.
+    build: ollama
+    image: langchain4j/ollama-gemma3:latest
     ports:
-      - "18081:8080"
-    volumes:
-      - llm-cache:/root/.cache
+      - "11434:11434"
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf http://localhost:8080/health || exit 1"]
+      test: ["CMD-SHELL", "ollama list | grep -q gemma3"]
       interval: 10s
       timeout: 5s
-      retries: 90
-      start_period: 30s
+      retries: 30
+      start_period: 10s
 
   app:
     build: .
     environment:
-      LLM_URL: http://llm:8080/v1
+      LANGCHAIN4J_OLLAMA_BASE_URL: http://llm:11434
     ports:
       - "8080:8080"
     depends_on:
@@ -51,6 +46,3 @@ services:
       APP_URL: http://app:8080/extract
     volumes:
       - ./samples:/samples:ro
-
-volumes:
-  llm-cache:
